@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do list</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+  
+  <div class="container">
+
+    <h1 class="heading">To Do List</h1>
+    <h3 class="date-text"> <%= kindOfDay %> </h3>
+      <div class="list-container">
+        <ul class="list">
+          
+          <% for(i=0;i<newListItems.length;i++) {%>
+            <% if(newListItems[i]!="") {%>
+            <li><input type="checkbox" class="check-box"> <span class="itemVal"><%= newListItems[i] %></span></li>
+          <% } } %>
+        </ul>
+        <form action="/" method="post">
+          <input type="text" name="item" placeholder="New Item" autocomplete="off"> 
+          <button type="submit"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </form>
+      </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+body{
+  margin:0;
+  background-image: -webkit-linear-gradient(65deg, #9a70dd 30%, #cccbd3 30%);
+  min-height: 800px;
+  font-family: 'Montserrat', sans-serif;
+}
+.container {
+  text-align: center;
+  
+}
+.heading {
+  
+  background-color: black;
+  color: #a8a7b2;
+  margin:0;
+  padding: 10px;
+  
+}
+.date-text {
+  background-color: #9a70dd;
+  border-radius: 6px;
+  color:white;
+  display: inline-block;
+  padding: 0.5rem;
+  width:20rem;
+  
+
+}
+
+.list-container {
+  width: 21rem;
+  background-color: white;
+  margin: auto;
+  padding: 0.4rem;
+  box-shadow: 6px 6px 3px #a8a7b2;
+}
+.list {
+  
+  width:21rem;
+  margin: auto;
+  text-align: left;
+  padding: 0;
+}
+.list li {
+  list-style: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #a8a7b2;
+  border-bottom: 1px solid #e8e7f0;
+  
+}
+.list li:last-child {
+  border-bottom: none;
+}
+.item-val {
+  padding-left: 6px;
+  margin: 0;
+} 
+input[type=checkbox] {
+  height: 10px;
+  border-color: #a8a7b2;
+  outline: none; 
+}
+input[type='checkbox']:hover:after, input[type='checkbox']:checked:hover:after {
+	background: #9a70dd;
+	content: '\2714';
+	color: #fff;
+}
+
+input[type='checkbox']:checked:after {
+	background: #9a70dd;
+	content: '\2714';
+	color: #fff;
+}
+
+.check-box:checked {
+  background-color: #9a70dd!important;
+  color:white!important;
+  
+
+}
+
+.check-box:checked + span{
+  
+  text-decoration:line-through;
+
+}
+input[type=text] {
+  
+  border: none;
+  width:19.8rem;
+  outline: none;
+  height: 30px;
+  text-align: center;
+  color: #a8a7b2;
+  
+  
+}
+input[type=text]::placeholder {
+  text-align: center;
+  color: gray;
+  opacity: 1;
+}
+input[type=text]:hover {
+  outline: none;
+}
+
+input[type=text]:focus {
+  border-bottom: 1px solid #9a70dd;
+}
+button[type=submit] {
+  height: 30px;
+  
+  margin-left: -30px;
+  border: none;
+  border-radius: 50%;
+  background-color: #9a70dd;
+  color: white;
+  outline: none;
+
+}
+button[type=submit]:hover {
+  background-color: #b391e9;
+  color: white;
+
+} 
