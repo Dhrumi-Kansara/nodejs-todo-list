@@ -13,7 +13,7 @@
   <div class="container">
 
     <h1 class="heading">To Do List</h1>
-    <h3 class="date-text"> <%= kindOfDay %> </h3>
+    <h3 class="date-text"> <%= listType %> </h3>
       <div class="list-container">
         <ul class="list">
           
@@ -24,7 +24,7 @@
         </ul>
         <form action="/" method="post">
           <input type="text" name="item" placeholder="New Item" autocomplete="off"> 
-          <button type="submit"><i class="fa fa-plus" aria-hidden="true"></i></button>
+          <button type="submit" name="listType" value="<%= listType %>"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </form>
       </div>
   </div>
