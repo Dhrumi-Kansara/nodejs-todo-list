@@ -2,11 +2,10 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 const date = require(__dirname + "/date.js");
-const app=express();
 
-const items=[];
-const workItems=[];
+const app=express();
 
 app.set('view engine','ejs');
 
@@ -14,41 +13,53 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static("public"));
 
+mongoose.connect("mongodb://localhost:27017/todolistDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
+});
+
+const itemsSchema = new mongoose.Schema({
+  name: String
+});
+
+const Item = new mongoose.model("Item",itemsSchema);
 
 app.get("/",function(req, res){
   let day=date.getDate();
-  res.render("list", {listType: day, newListItems: items});
+  
+  Item.find({},function(err, foundItems){
+    res.render("list", {listType: day, newListItems: foundItems});
+    console.log(foundItems);
+  });  
+  
 }); 
-
-app.get("/work",function(req, res){
-  res.render("list",{listType:"work", newListItems: workItems});
-});
-
-
 
 app.post("/",function(req, res){
   
-  let item=req.body.item;
-  if(req.body.listType=="work") {
-    workItems.push(item);
-    res.redirect("work");
-  }
-  else {
+  let itemName=req.body.item;
   
-  items.push(item);
-
+  const newItem = new Item({
+    name: itemName
+  });
+  newItem.save();
   res.redirect("/");
-  }
+  
 });
 
+app.post("/delete",function(req, res){
+  const checkedItemId=req.body.checkBox;
 
-app.post("/work",function(req, res){
-  let item=req.body.item;
-  items.push(item);
-  res.redirect("/work");
+  Item.findByIdAndRemove(checkedItemId,function(err){
+    if(err) {
+      console.log(err);
+    }
+    else {
+      console.log("delete successfull");
+      res.redirect("/");
+    }
+  });
+
 });
-
-
 
 app.listen(3000, function() {
   console.log("server started at port 3000 ");
