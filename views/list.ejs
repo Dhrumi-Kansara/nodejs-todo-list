@@ -22,6 +22,7 @@
             <% if(item.name!="") {%>
             <form action="/delete" method="post">
               <li><input type="checkbox" class="check-box" name="checkBox" value="<%= item._id %>" onchange="this.form.submit()"> 
+                  <input type="hidden" name="listType" value="<%= listType %>">
                     <span class="itemVal">
                       <%= item.name %>
                     </span>
