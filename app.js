@@ -38,7 +38,7 @@ app.get("/",function(req, res){
 
   Item.find({},function(err, foundItems){
 
-  res.render("list", {listType: "Today", newListItems: foundItems});
+    res.render("list", {listType: "Today", newListItems: foundItems});
 
   });  
 }); 
@@ -51,11 +51,9 @@ app.get("/:customListName",function(req, res){
     
     if(!err) {
       if(!foundList) {
-        
         const newList = new List({
           name: customListName,
           items: []
-
         });
         newList.save(); 
         res.redirect("/"+customListName);
@@ -67,12 +65,10 @@ app.get("/:customListName",function(req, res){
   });
 });
 
-
 app.post("/",function(req, res){
 
   let listType = req.body.listType;
   let itemName=req.body.item;
-
   
   const newItem = new Item({
     name: itemName
